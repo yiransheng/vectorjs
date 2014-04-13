@@ -85,7 +85,7 @@
         _extend(vector, vector2dMethods);
         if (Vector2d.isVector(obj)) {
             return vector(obj)
-        } else if (obj instance of Array) {
+        } else if (obj instanceof Array) {
             return obj.map(Vector2d)
         } else if (typeof obj == "number" && typeof y == "number"){
             return vector({x:obj, y:y})
