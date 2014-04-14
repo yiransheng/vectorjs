@@ -88,6 +88,7 @@
         add : add,
         subtract: subtract,
         cross : cross,
+        dot: dot,
         normalize: normalize,
         distance : distance,
         size: size,
