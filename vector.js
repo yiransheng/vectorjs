@@ -109,8 +109,14 @@
             enumerable : false
         },
         valueOf : {
-            value: function () {
-                return isPointXY(this) ? { x: this.x, y: this.y} : toXY(this) 
+            value: function (polar) {
+                return polar == "polar" ?  { r: this.r, theta: this.theta} : { x: this.x, y: this.y}  
+            },
+            enumerable : false
+        },
+        toJSON : {
+            value: function (polar) {
+                return polar == "polar" ?  { r: this.r, theta: this.theta} : { x: this.x, y: this.y}  
             },
             enumerable : false
         },
