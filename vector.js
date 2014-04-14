@@ -276,7 +276,7 @@
     Point2d = function(obj, y, polar) { 
         if (obj instanceof Point2dConstructor) {
             return obj;
-        } else if (Point2d.isPoint(obj)) {
+        } else if (isPoint(obj)) {
             if (isPointXY(obj)) {
                 var p = new Point2dConstructor(obj.x, obj.y); 
             } else {
@@ -293,7 +293,16 @@
             return obj
         }
     };
-    _extend(Point2d, Point2dMethods);
+    methods
+        .map(function(method) {
+            return function() {
+                var p = Point2dMethods[method].apply(this, arguments);
+                return Point2d(p)    
+            }
+        })
+        .forEach(function(fn, i) {
+            Point2d[methods[i]] = fn;     
+        });
     var _Point = root.point;
     Point2d.no_conflict = function() {
         return _Point;
