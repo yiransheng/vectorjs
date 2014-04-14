@@ -56,4 +56,27 @@ point.isPointXY
 point.toPolar
 point.toXY
 ```
+Two additional instance methods are offered:
+```
+point.set(options) // set values of point object
+
+var p = point();
+p.set({
+   x: 10, 
+   y: 10
+});
+
+p // { x: 10, y: 10}
+
+point.transform(func, [copy]) //apply function to a point obj
+
+/* If copy is set to 'copy', returns a copy of the transformed point */
+
+p.transform(function(p) {
+  p.r = 1;
+  p.theta = 0;
+})
+```
+
+
 
